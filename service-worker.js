@@ -1,7 +1,8 @@
-const CACHE_NAME = 'nrt-v3';
+const CACHE_NAME = 'nrt-v4';
 const urlsToCache = [
   './',
   'index.html',
+  'tailwindcss.css',
   'manifest.json',
   'service-worker.js',
   'icon-192x192.png',
