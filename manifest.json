@@ -1,7 +1,7 @@
 {
-  "name": "N.R.T. Data Entry App",
+  "name": "N.R.T.",
   "short_name": "N.R.T.",
-  "description": "N.R.T. Data Entry App",
+  "description": "Your mobile-friendly sales tracker.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
