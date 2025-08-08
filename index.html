@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N.R.T. Data Entry App</title>
-    
+    <title>N.R.T.</title>
     <link rel="manifest" href="manifest.json">
-    
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -21,148 +19,31 @@
             });
         }
     </script>
-    
+    <link rel="stylesheet" href="tailwindcss.css">
+    <script src="chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
-        :root {
-            --bg-color: #f3f4f6;
-            --text-color: #1f2937;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --primary-color: #3d74b6;
-            --accent-color: #eac8a6;
-            --danger-color: #dc3c22;
-            --success-color: #10b981;
-            --info-color: #fcd34d;
-        }
-        
-        .dark {
-            --bg-color: #111827;
-            --text-color: #f3f4f6;
-            --card-bg: #1f2937;
-            --border-color: #374151;
-            --primary-color: #60a5fa;
-            --accent-color: #d68b55;
-            --danger-color: #f87171;
-            --success-color: #4ade80;
-            --info-color: #fcd34d;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-            margin: 0;
-            padding: 1rem;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
-
-        .max-w-2xl {
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        header {
-            text-align: center;
-        }
-
-        h1, h2, h3 {
-            font-weight: bold;
-            color: var(--text-color);
-        }
-        
-        h1 { font-size: 1.875rem; }
-        h2 { font-size: 1.25rem; }
-        h3 { font-size: 1.125rem; }
-
-        .p-4 { padding: 1rem; }
-        .p-6 { padding: 1.5rem; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        .bg-white { background-color: var(--card-bg); }
-
-        .form-view, .dashboard-view {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-view {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .grid { display: grid; }
-        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .gap-4 { gap: 1rem; }
-
-        label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.375rem;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-
-        button {
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
+        /* Custom styles for the app */
+        .manage-toggle-btn {
             cursor: pointer;
-            transition: background-color 0.15s ease-in-out;
+            transition: transform 0.2s ease-in-out;
         }
-
-        .bg-primary { background-color: var(--primary-color); color: white; }
-        .bg-primary:hover { background-color: #2d5f99; }
-        .bg-accent { background-color: var(--accent-color); color: white; }
-        .bg-accent:hover { background-color: #d6b797; }
-        .bg-gray-300 { background-color: #d1d5db; color: #1f2937; }
-        .bg-gray-300:hover { background-color: #9ca3af; }
-        .bg-danger { background-color: var(--danger-color); color: white; }
-        .bg-danger:hover { background-color: #b0301a; }
-        
-        .hidden { display: none; }
-        .flex { display: flex; }
-        .space-x-2 > * + * { margin-left: 0.5rem; }
-        .justify-end { justify-content: flex-end; }
-        .justify-between { justify-content: space-between; }
-        .items-center { align-items: center; }
-
-        .notification-container {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .manage-toggle-btn:hover {
+            transform: scale(1.1);
         }
-        
-        .notification {
-            padding: 0.75rem;
-            border-radius: 0.375rem;
-            color: white;
-            animation: fadein 0.5s, fadeout 0.5s 3.5s;
+        .editable-item {
+            cursor: pointer;
+            outline: none;
+            border-bottom: 1px dashed transparent;
         }
-
-        .notification.success { background-color: var(--success-color); }
-        .notification.error { background-color: var(--danger-color); }
-
-        @keyframes fadein { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeout { from { opacity: 1; } to { opacity: 0; transform: translateY(20px); } }
-
+        .editable-item:focus {
+            border-bottom: 1px dashed #3d74b6;
+        }
+        /* Custom modal for alerts */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -173,237 +54,348 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 100;
+            z-index: 1000;
         }
-        
         .modal-box {
-            background-color: var(--card-bg);
+            background-color: white;
             padding: 2rem;
-            border-radius: 0.5rem;
-            max-width: 24rem;
-            width: 90%;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
         }
-
-        .modal-action {
+        .invalid-field {
+            border-color: #ef4444 !important; /* Red border for invalid fields */
+        }
+        /* Custom notification style */
+        .notification-container {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
             display: flex;
-            justify-content: flex-end;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .notification {
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInOut 4s forwards;
+        }
+        .notification.success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .notification.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+        /* New style for the signature box */
+        .signature-box {
+            border: 1px solid #000;
+            width: 150px;
+            height: 60px;
+            position: relative;
             margin-top: 1rem;
         }
-
-        .invalid-field {
-            border-color: var(--danger-color);
-            background-color: #fee2e2;
+        .signature-box::before {
+            content: 'Signature';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #4b5563;
         }
-
-        /* Styles for the receipt JPEG */
+        
+        /* New receipt styles */
         .receipt-container {
-            padding: 1rem;
-            border: 2px solid black;
-            font-family: monospace;
+            width: 350px;
             background-color: white;
-            color: black;
-            width: 300px;
-            box-sizing: border-box;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
-        .receipt-header { text-align: center; border-bottom: 1px dashed black; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
-        .receipt-header h1 { margin: 0; font-size: 1.2rem; }
-        .receipt-header p { margin: 0; font-size: 0.8rem; }
-        .receipt-details p { margin: 0; font-size: 0.9rem; line-height: 1.2; }
-        .receipt-total { border-top: 1px dashed black; margin-top: 0.5rem; padding-top: 0.5rem; }
-        .receipt-total p { margin: 0; font-size: 0.9rem; font-weight: bold; }
-        .receipt-signature-box { border-top: 1px dashed black; margin-top: 1rem; padding-top: 0.5rem; text-align: center; font-size: 0.8rem; }
+        .receipt-header {
+            text-align: center;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .receipt-header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .receipt-header p {
+            font-size: 0.875rem;
+        }
+        .receipt-details p {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        .receipt-details strong {
+            font-weight: 600;
+        }
+        .receipt-total {
+            border-top: 2px dashed #000;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+        .receipt-signature-box {
+            border-top: 1px solid #000;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 0.5rem;
+        }
+        .receipt-signature-box p {
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
     </style>
 </head>
-<body class="bg-gray-200 text-gray-900 font-sans p-4 dark:bg-gray-900 dark:text-gray-100">
-
-    <div class="max-w-2xl mx-auto space-y-6">
-
-        <header class="text-center">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-50">N.R.T. Data Entry App</h1>
-            <p class="text-gray-600 dark:text-gray-400">Manage your sales data effortlessly</p>
-        </header>
-
-        <main class="space-y-6">
-
-            <button id="toggle-view-btn" class="w-full bg-accent hover:bg-[#d6b797] text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-150 ease-in-out">
-                Switch to Dashboard
-            </button>
-
-            <div id="form-view" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
-                <h2 class="text-xl font-bold text-center">Add New Sales Entry</h2>
-
-                <form id="sales-form" class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="space-y-1">
-                            <label for="date" class="block text-sm font-medium">Date</label>
-                            <input type="date" id="date" name="date" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" required>
-                        </div>
-                        <div class="space-y-1">
-                            <label for="storeName" class="block text-sm font-medium">Store Name</label>
-                            <select id="storeName" name="storeName" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" required>
-                                <option value="" disabled selected>Select a store</option>
-                            </select>
-                        </div>
-                        <div class="space-y-1">
-                            <label for="mobileNumber" class="block text-sm font-medium">Mobile Number</label>
-                            <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" required>
-                            <p id="mobile-error" class="text-sm text-danger mt-1 hidden">Please enter a valid 11-digit number.</p>
-                        </div>
-                        <div class="space-y-1">
-                            <label for="invoiceNumber" class="block text-sm font-medium">Invoice Number</label>
-                            <input type="text" id="invoiceNumber" name="invoiceNumber" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700">
-                        </div>
-                        <div class="space-y-1">
-                            <label for="gadgetType" class="block text-sm font-medium">Gadget Type</label>
-                            <select id="gadgetType" name="gadgetType" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" required>
-                                <option value="" disabled selected>Select a gadget type</option>
-                            </select>
-                        </div>
-                        <div class="space-y-1">
-                            <label for="modelName" class="block text-sm font-medium">Model Name</label>
-                            <input type="text" id="modelName" name="modelName" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700">
-                        </div>
-                        <div class="space-y-1">
-                            <label for="quantity" class="block text-sm font-medium">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" required>
-                        </div>
-                        <div class="space-y-1">
-                            <label for="sellingPrice" class="block text-sm font-medium">Selling Price (BDT)</label>
-                            <input type="number" id="sellingPrice" name="sellingPrice" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" step="0.01" required>
-                        </div>
-                        <div class="space-y-1 md:col-span-2">
-                            <label for="totalRevenue" class="block text-sm font-medium">Total Revenue (BDT)</label>
-                            <input type="number" id="totalRevenue" name="totalRevenue" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 cursor-not-allowed" step="0.01" readonly>
-                        </div>
-                        <div class="space-y-1 md:col-span-2">
-                            <label for="due" class="block text-sm font-medium">Due (BDT)</label>
-                            <input type="number" id="due" name="due" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" step="0.01">
-                        </div>
-                        <div class="flex items-center md:col-span-2">
-                            <input type="checkbox" id="keep-shop-info" class="h-4 w-4 text-primary rounded focus:ring-blue-500">
-                            <label for="keep-shop-info" class="ml-2 block text-sm font-medium">Keep shop info for next entry</label>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-2 justify-end">
-                        <button type="button" id="cancel-edit-btn" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 rounded-md text-white font-semibold hidden">Cancel Edit</button>
-                        <button type="button" id="clear-form-btn" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-md text-gray-800 font-semibold">Clear Form</button>
-                        <button type="submit" id="submit-btn" class="px-4 py-2 bg-primary hover:bg-[#2d5f99] rounded-md text-white font-semibold">Submit</button>
-                    </div>
-                </form>
-
-                <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-lg font-bold">Manage Stores and Gadgets</h3>
-                        <div class="flex space-x-4">
-                            <button id="manage-stores-toggle" class="manage-toggle-btn text-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0a2 2 0 012-2h4a2 2 0 012 2m-2 2V6M5 13V9a2 2 0 012-2m0 0a2 2 0 012-2h4a2 2 0 012 2m-2 2V6M5 13v2a2 2 0 002 2m0 0a2 2 0 002 2h4a2 2 0 002-2m0 0v-2" />
-                                </svg>
-                            </button>
-                            <button id="manage-gadgets-toggle" class="manage-toggle-btn text-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 1 012 2v3m-4-3a2 2 1 004 0m-4 0a2 2 1 01-2 2v3m-4-3a2 2 1 01-2 2v3m12-3a2 2 1 01-2-2v3m0 0V9a2 2 0 00-2-2h-4a2 2 0 00-2 2v10m-2-5h10m-12-3a2 2 1 012 2v3m0 0V9a2 2 0 00-2-2h-4a2 2 0 00-2 2v10m-2-5h10m-12-3a2 2 1 012 2v3m0 0V9a2 2 0 00-2-2h-4a2 2 0 00-2 2v10m-2-5h10m-12-3a2 2 1 012 2v3m0 0V9a2 2 0 00-2-2h-4a2 2 0 00-2 2v10m-2-5h10m-12-3a2 2 1 012 2v3m0 0V9a2 2 0 00-2-2h-4a2 2 0 00-2 2v10m-2-5h10" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="manage-stores-container" class="mt-4 hidden space-y-2">
-                        <h4 class="text-sm font-bold">Manage Stores</h4>
-                        <div class="flex space-x-2">
-                            <input type="text" id="new-store-input" class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" placeholder="New Store Name">
-                            <button type="button" id="add-store-btn" class="p-2 bg-primary text-white rounded-md hover:bg-[#2d5f99] disabled:bg-gray-400" disabled>Add</button>
-                        </div>
-                        <div id="store-list" class="space-y-2 max-h-40 overflow-y-auto pr-2"></div>
-                    </div>
-
-                    <div id="manage-gadgets-container" class="mt-4 hidden space-y-2">
-                        <h4 class="text-sm font-bold">Manage Gadgets</h4>
-                        <div class="flex space-x-2">
-                            <input type="text" id="new-gadget-input" class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700" placeholder="New Gadget Type">
-                            <button type="button" id="add-gadget-btn" class="p-2 bg-primary text-white rounded-md hover:bg-[#2d5f99] disabled:bg-gray-400" disabled>Add</button>
-                        </div>
-                        <div id="gadget-list" class="space-y-2 max-h-40 overflow-y-auto pr-2"></div>
-                    </div>
-                </div>
-
-                <div class="pt-4 border-t border-gray-200 dark:border-gray-700 mt-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-bold">Sales Entries</h2>
-                        <div class="flex space-x-2">
-                            <button id="view-dues-btn" class="px-2 py-1 bg-info hover:bg-[#eab308] rounded-md text-gray-800 text-sm font-semibold">View Dues</button>
-                            <button id="export-btn" class="px-2 py-1 bg-primary hover:bg-[#2d5f99] rounded-md text-white text-sm font-semibold">Export to CSV</button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center space-x-2 mb-4">
-                        <input type="text" id="search-input" placeholder="Search by mobile, invoice, store..." class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700">
-                        <button id="clear-search-btn" class="p-2 bg-gray-300 hover:bg-gray-400 rounded-md text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div id="entries-list" class="space-y-4">
-                        </div>
-                </div>
-            </div>
-
-            <div id="dashboard-view" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-6 hidden">
-                <h2 class="text-xl font-bold text-center">Sales Dashboard</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div class="bg-[#fbf5de] dark:bg-[#eac8a6] p-4 rounded-lg shadow-sm">
-                        <h3 class="text-sm text-gray-700 dark:text-gray-900 font-semibold">Total Sales</h3>
-                        <p id="total-sales" class="text-xl font-bold text-gray-900 dark:text-gray-900 mt-1">BDT 0.00</p>
-                    </div>
-                    <div class="bg-[#eac8a6] dark:bg-[#d68b55] p-4 rounded-lg shadow-sm">
-                        <h3 class="text-sm text-gray-700 dark:text-gray-900 font-semibold">Total Due</h3>
-                        <p id="total-due" class="text-xl font-bold text-gray-900 dark:text-gray-900 mt-1">BDT 0.00</p>
-                    </div>
-                    <div class="bg-[#fbf5de] dark:bg-[#eac8a6] p-4 rounded-lg shadow-sm">
-                        <h3 class="text-sm text-gray-700 dark:text-gray-900 font-semibold">Total Shops</h3>
-                        <p id="total-shops" class="text-xl font-bold text-gray-900 dark:text-gray-900 mt-1">0</p>
-                    </div>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-center mb-2">Revenue by Date</h3>
-                        <canvas id="revenue-chart"></canvas>
-                    </div>
-                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-center mb-2">Top Gadgets</h3>
-                        <canvas id="gadget-sales-chart"></canvas>
-                    </div>
-                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-center mb-2">Sales by Store</h3>
-                        <canvas id="store-sales-chart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </main>
-    </div>
-
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="notification-container"></div>
     <div id="custom-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <h3 id="modal-title" class="text-lg font-bold"></h3>
-            <p id="modal-text" class="py-4"></p>
-            <div class="modal-action">
-                <button id="modal-confirm-btn" class="px-4 py-2 bg-primary hover:bg-[#2d5f99] rounded-md text-white font-semibold">OK</button>
+        <div class="modal-box dark:bg-gray-800">
+            <h4 id="modal-title" class="text-xl font-bold text-gray-900 dark:text-gray-50">Alert</h4>
+            <p id="modal-text" class="mt-4 text-gray-700 dark:text-gray-300">This is a custom alert.</p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <button id="modal-confirm-btn" class="px-4 py-2 bg-[#3d74b6] hover:bg-[#2d5f99] text-white rounded-md font-semibold">OK</button>
             </div>
         </div>
     </div>
     
-    <div class="notification-container"></div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 space-y-6 border border-gray-200 dark:border-gray-700">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50">N.R.T.</h1>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" id="tagline">Record an Achievement</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="toggle-view-btn" class="px-4 py-2 bg-[#3d74b6] hover:bg-[#2d5f99] rounded-md text-white font-semibold shadow-lg transform transition duration-200 hover:scale-105">
+                        Switch to Dashboard
+                    </button>
+                </div>
+            </div>
+
+            <div id="main-content-container">
+                <div id="form-view" class="space-y-6">
+                    <form id="sales-form" class="space-y-4">
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Date <span class="text-red-500">*</span>
+                            </label>
+                            <input type="date" id="date" name="date" required
+                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <label for="storeName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Store Name <span class="text-red-500">*</span>
+                                </label>
+                                <button type="button" id="manage-stores-toggle" class="manage-toggle-btn text-[#3d74b6] hover:text-[#2d5f99]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 20h9"></path>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <select id="storeName" name="storeName" required
+                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                                <option value="" disabled selected>Select a store</option>
+                                </select>
+                            <div id="manage-stores-container" class="mt-4 space-y-4 hidden">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Manage Store Names</h3>
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" id="new-store-input" placeholder="Search or add a store name"
+                                        class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
+                                    <button type="button" id="add-store-btn"
+                                        class="px-4 py-2 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                        Add
+                                    </button>
+                                </div>
+                                <div id="store-list" class="space-y-2"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="mobileNumber" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Mobile Number <span class="text-red-500">*</span>
+                            </label>
+                            <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="e.g., 01712345678"
+                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                            <p id="mobile-error" class="mt-1 text-sm text-red-500 hidden">Please enter a valid 11-digit mobile number.</p>
+                        </div>
+                        <div>
+                            <label for="invoiceNumber" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Invoice Number <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="invoiceNumber" name="invoiceNumber" required placeholder="e.g., INV-00123"
+                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <label for="gadgetType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Gadget Type <span class="text-red-500">*</span>
+                                </label>
+                                <button type="button" id="manage-gadgets-toggle" class="manage-toggle-btn text-[#3d74b6] hover:text-[#2d5f99]">
+                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 20h9"></path>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <select id="gadgetType" name="gadgetType" required
+                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                                <option value="" disabled selected>Select a gadget type</option>
+                                </select>
+                            <div id="manage-gadgets-container" class="mt-4 space-y-4 hidden">
+                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Manage Gadget Types</h3>
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" id="new-gadget-input" placeholder="Search or add a gadget type"
+                                        class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
+                                    <button type="button" id="add-gadget-btn"
+                                        class="px-4 py-2 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                        Add
+                                    </button>
+                                </div>
+                                <div id="gadget-list" class="space-y-2"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="modelName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Model Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="modelName" name="modelName" required placeholder="e.g., iPhone 15 Pro"
+                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Quantity <span class="text-red-500">*</span>
+                                </label>
+                                <input type="number" id="quantity" name="quantity" required min="1" value="1"
+                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                            </div>
+                            
+                            <div>
+                                <label for="sellingPrice" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Selling Price (BDT) <span class="text-red-500">*</span>
+                                </label>
+                                <input type="number" id="sellingPrice" name="sellingPrice" required min="0" step="0.01" placeholder="e.g., 999.99"
+                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                            </div>
+
+                            <div>
+                                <label for="totalRevenue" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Total
+                                </label>
+                                <input type="number" id="totalRevenue" name="totalRevenue" readonly value="0.00"
+                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 cursor-not-allowed">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="due" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Due (optional)</label>
+                            <input type="number" id="due" name="due" min="0" step="0.01" placeholder="e.g., 50.00"
+                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
+                        </div>
+
+                        <div class="flex items-center mt-2">
+                            <input type="checkbox" id="keep-shop-info" class="h-4 w-4 text-[#3d74b6] focus:ring-[#3d74b6] border-gray-300 rounded">
+                            <label for="keep-shop-info" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">Keep Shop Name and Mobile Number</label>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <button type="submit" id="submit-btn"
+                                    class="flex-1 py-3 px-4 bg-[#3d74b6] hover:bg-[#2d5f99] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105">
+                                Submit
+                            </button>
+                            <button type="button" id="clear-form-btn"
+                                    class="flex-1 py-3 px-4 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105">
+                                Clear Form
+                            </button>
+                            <button type="button" id="cancel-edit-btn"
+                                    class="flex-1 py-3 px-4 bg-[#dc3c22] hover:bg-[#b0301a] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105 hidden">
+                                Cancel Edit
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="data-display" class="mt-8">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-50">Saved Entries</h2>
+                        <div class="flex items-center space-x-2 mt-4">
+                            <input type="text" id="search-input" placeholder="Search by mobile, invoice, store, or date"
+                                   class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
+                            <button type="button" id="clear-search-btn"
+                                    class="px-4 py-2 bg-[#dc3c22] hover:bg-[#b0301a] rounded-md text-white font-semibold">Clear</button>
+                        </div>
+                        <div class="flex justify-between space-x-2 mt-4">
+                             <button type="button" id="view-dues-btn"
+                                    class="flex-1 py-2 px-4 bg-[#fbf5de] hover:bg-[#e6e0cc] rounded-md text-gray-800 font-semibold">
+                                View Dues
+                            </button>
+                            <button type="button" id="export-btn"
+                                    class="flex-1 py-2 px-4 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold">
+                                Export Data
+                            </button>
+                        </div>
+                        <div id="entries-list" class="mt-4 space-y-4">
+                            <p class="text-gray-500 dark:text-gray-400">No entries saved yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dashboard-view" class="hidden">
+                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-[#eac8a6] dark:bg-[#d6b797] p-6 rounded-lg shadow-md">
+                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Total Revenue</p>
+                            <p id="total-sales" class="mt-1 text-3xl font-bold text-gray-900 dark:text-gray-100">BDT 0.00</p>
+                        </div>
+                        <div class="bg-[#fbf5de] dark:bg-[#e6e0cc] p-6 rounded-lg shadow-md">
+                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Outstanding Due</p>
+                            <p id="total-due" class="mt-1 text-3xl font-bold text-gray-900 dark:text-gray-100">BDT 0.00</p>
+                        </div>
+                        <div class="bg-[#dc3c22] dark:bg-[#b0301a] p-6 rounded-lg shadow-md">
+                            <p class="text-sm font-medium text-white dark:text-gray-200">Total Shops</p>
+                            <p id="total-shops" class="mt-1 text-3xl font-bold text-white dark:text-gray-100">0</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Total Revenue by Date</h3>
+                            <canvas id="revenue-chart"></canvas>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Top Gadgets</h3>
+                            <canvas id="gadget-sales-chart"></canvas>
+                         </div>
+                         <div class="md:col-span-2 bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Sales by Store</h3>
+                            <canvas id="store-sales-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Keys for Local Storage
@@ -496,7 +488,7 @@
                     onConfirmCallback();
                 };
             };
-
+            
             // Show a temporary notification
             const showNotification = (message, type = 'success') => {
                 const notification = document.createElement('div');
@@ -555,11 +547,11 @@
                         listItem.innerHTML = `
                             <span contenteditable="true" class="editable-item text-gray-900 dark:text-gray-50 px-2 py-1" data-old-value="${item}">${item}</span>
                             <div>
-                                <button type="button" class="delete-item-btn text-danger hover:text-[#b0301a] ml-2" data-item="${item}" data-type="${type}">
+                                <button type="button" class="delete-item-btn text-[#dc3c22] hover:text-[#b0301a] ml-2" data-item="${item}" data-type="${type}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M3 6h18"></path>
-                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
-                                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 0 0 1-2-2V6"></path>
+                                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 0 0 1 2 2v2"></path>
                                         <line x1="10" y1="11" x2="10" y2="17"></line>
                                         <line x1="14" y1="11" x2="14" y2="17"></line>
                                     </svg>
@@ -722,7 +714,7 @@
                         </div>
                         <div class="receipt-total">
                             <p><strong>Total:</strong> BDT ${parseFloat(entry.totalRevenue).toFixed(2)}</p>
-                            <p><strong>Due:</strong> ${entry.due && parseFloat(entry.due) > 0 ? `<span class="text-danger font-bold">BDT ${parseFloat(entry.due).toFixed(2)}</span>` : 'Paid'}</p>
+                            <p><strong>Due:</strong> ${entry.due && parseFloat(entry.due) > 0 ? `<span class="text-[#dc3c22]">BDT ${parseFloat(entry.due).toFixed(2)}</span>` : 'Paid'}</p>
                         </div>
                         <div class="receipt-signature-box">
                             <p>Signature</p>
@@ -775,16 +767,16 @@
                             <p class="text-sm text-gray-800 dark:text-gray-200"><strong>Quantity:</strong> ${entry.quantity}</p>
                             <p class="text-sm text-gray-800 dark:text-gray-200"><strong>Price:</strong> BDT ${entry.sellingPrice}</p>
                             <p class="text-sm text-gray-800 dark:text-gray-200"><strong>Total:</strong> BDT ${entry.totalRevenue}</p>
-                            <p class="text-sm text-gray-800 dark:text-gray-200"><strong>Due:</strong> ${entry.due && parseFloat(entry.due) > 0 ? `<span class="text-danger font-bold">BDT ${parseFloat(entry.due).toFixed(2)}</span>` : 'Paid'}</p>
+                            <p class="text-sm text-gray-800 dark:text-gray-200"><strong>Due:</strong> ${entry.due && parseFloat(entry.due) > 0 ? `<span class="text-[#dc3c22] font-bold">BDT ${parseFloat(entry.due).toFixed(2)}</span>` : 'Paid'}</p>
                         </div>
                         <div class="flex space-x-2 mt-4 sm:mt-0">
-                             <button type="button" class="download-jpeg-btn px-2 py-1 bg-primary hover:bg-[#2d5f99] rounded-md text-white text-xs font-semibold" data-index="${index}">
+                             <button type="button" class="download-jpeg-btn px-2 py-1 bg-[#3d74b6] hover:bg-[#2d5f99] rounded-md text-white text-xs font-semibold" data-index="${index}">
                                 Download as JPEG
                             </button>
-                             <button type="button" class="edit-btn px-2 py-1 bg-accent hover:bg-[#d6b797] rounded-md text-white text-xs font-semibold" data-index="${index}">
+                             <button type="button" class="edit-btn px-2 py-1 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white text-xs font-semibold" data-index="${index}">
                                 Edit
                             </button>
-                            <button type="button" class="delete-btn px-2 py-1 bg-danger hover:bg-[#b0301a] rounded-md text-white text-xs font-semibold" data-index="${index}">
+                            <button type="button" class="delete-btn px-2 py-1 bg-[#dc3c22] hover:bg-[#b0301a] rounded-md text-white text-xs font-semibold" data-index="${index}">
                                 Delete
                             </button>
                         </div>
