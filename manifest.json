@@ -1,19 +1,19 @@
 {
   "name": "N.R.T.",
   "short_name": "N.R.T.",
-  "description": "Your mobile-friendly sales tracker.",
-  "start_url": "./",
+  "description": "N.R.T. Data Entry App",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3d74b6",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "./icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "./icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
