@@ -1,10 +1,10 @@
-const CACHE_NAME = 'nrt-v5'; // New cache name to force an update
+const CACHE_NAME = 'nrt-v2';
 const urlsToCache = [
   './',
   'index.html',
   'manifest.json',
-  'service-worker.js',
-  'https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js',
+  'https://cdn.tailwindcss.com',
+  'https://cdn.jsdelivr.net/npm/chart.js',
   'https://html2canvas.hertzen.com/dist/html2canvas.min.js',
   'icon-192x192.png',
   'icon-512x512.png'
@@ -14,6 +14,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
