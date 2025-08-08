@@ -1,7 +1,7 @@
 const CACHE_NAME = 'nrt-v1';
 const urlsToCache = [
   './',
-  'nrt_app2.html',
+  'index.html',
   'manifest.json',
   'https://cdn.tailwindcss.com',
   'https://cdn.jsdelivr.net/npm/chart.js',
