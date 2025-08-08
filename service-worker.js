@@ -1,10 +1,11 @@
-const CACHE_NAME = 'nrt-v4';
+const CACHE_NAME = 'nrt-v5'; // New cache name to force an update
 const urlsToCache = [
   './',
   'index.html',
-  'tailwindcss.css',
   'manifest.json',
   'service-worker.js',
+  'https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js',
+  'https://html2canvas.hertzen.com/dist/html2canvas.min.js',
   'icon-192x192.png',
   'icon-512x512.png'
 ];
