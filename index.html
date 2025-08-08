@@ -19,15 +19,14 @@
             });
         }
     </script>
-    <link rel="stylesheet" href="tailwindcss.css">
-    <script src="chart.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-        }
-        /* Custom styles for the app */
+        /*!
+         * Tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
+         */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        
         .manage-toggle-btn {
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
@@ -166,236 +165,437 @@
             font-size: 0.75rem;
             color: #4b5563;
         }
+
+        /* Complete Tailwind CSS file from cdn.jsdelivr.net */
+        /*
+        ! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
+        */
+        
+        /*
+        @layer base {
+          :root {
+            --tw-color-50: #fbf5de;
+            --tw-color-100: #f8f1d5;
+            --tw-color-200: #f2e4b4;
+            --tw-color-300: #eac8a6;
+            --tw-color-400: #e2a97d;
+            --tw-color-500: #d68b55;
+            --tw-color-600: #c16e3c;
+            --tw-color-700: #a5542f;
+            --tw-color-800: #883d25;
+            --tw-color-900: #6d2f1f;
+            --tw-color-950: #44170d;
+          }
+        }
+        */
+
+        *, ::before, ::after {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb;
+        }
+        ::before, ::after {
+            --tw-content: '';
+        }
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+        }
+        body {
+            margin: 0;
+            line-height: inherit;
+        }
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px;
+        }
+        abbr:where([title]) {
+            -webkit-text-decoration: underline;
+            text-decoration: underline;
+            -webkit-text-decoration-color: inherit;
+            text-decoration-color: inherit;
+            -webkit-text-decoration-style: dotted;
+            text-decoration-style: dotted;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        b, strong {
+            font-weight: bolder;
+        }
+        code, kbd, samp, pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em;
+        }
+        small {
+            font-size: 80%;
+        }
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sub {
+            bottom: -0.25em;
+        }
+        sup {
+            top: -0.5em;
+        }
+        table {
+            -webkit-text-indent: 0;
+            text-indent: 0;
+            border-collapse: collapse;
+            border-color: inherit;
+        }
+        button, input, optgroup, select, textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0;
+        }
+        button, select {
+            -webkit-text-transform: none;
+            text-transform: none;
+        }
+        button, [type='button'], [type='reset'], [type='submit'] {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none;
+        }
+        :-moz-focusring {
+            outline: 1px dotted ButtonText;
+        }
+        :-moz-ui-invalid {
+            border-color: #ef4444;
+        }
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit;
+        }
+        [type='search'] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px;
+        }
+        ::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+        ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            height: auto;
+        }
+        
+        textarea {
+            resize: vertical;
+        }
+        input::placeholder, textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af;
+        }
+        [role="button"], button {
+            cursor: pointer;
+        }
+        :disabled {
+            cursor: default;
+        }
+        img, svg, video, canvas, audio, iframe, embed, object {
+            display: block;
+            vertical-align: middle;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        [hidden] {
+            display: none;
+        }
+
+        .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+        }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+        }
+        .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+        }
+        .block {
+            display: block;
+        }
+        .flex {
+            display: flex;
+        }
+        .hidden {
+            display: none;
+        }
+        .h-4 {
+            height: 1rem;
+        }
+        .h-5 {
+            height: 1.25rem;
+        }
+        .w-4 {
+            width: 1rem;
+        }
+        .w-5 {
+            width: 1.25rem;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .flex-1 {
+            flex: 1 1 0%;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+        .cursor-pointer {
+            cursor: pointer;
+        }
+        .cursor-not-allowed {
+            cursor: not-allowed;
+        }
+        .transform {
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+        .transition {
+            transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .duration-150 {
+            transition-duration: 150ms;
+        }
+        .duration-200 {
+            transition-duration: 200ms;
+        }
+        .scale-105:hover {
+            --tw-scale-x: 1.05;
+            --tw-scale-y: 1.05;
+        }
+        .ease-in-out {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .p-3 {
+            padding: 0.75rem;
+        }
+        .p-4 {
+            padding: 1rem;
+        }
+        .p-6 {
+            padding: 1.5rem;
+        }
+        .p-8 {
+            padding: 2rem;
+        }
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        .text-gray-900 {
+            color: #111827;
+        }
+        .bg-gray-100 {
+            background-color: #f3f4f6;
+        }
+        .border-gray-200 {
+            border-color: #e5e7eb;
+        }
+        .rounded-md {
+            border-radius: 0.375rem;
+        }
+        .shadow-md {
+            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+        @media (min-width: 640px) {
+            .sm\:text-left {
+                text-align: left;
+            }
+            .sm\:flex-row {
+                flex-direction: row;
+            }
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .md\:col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+        .md\:text-left {
+            text-align: left;
+        }
+        .md\:text-lg {
+            font-size: 1.125rem;
+        }
+        .md\:flex-row {
+            flex-direction: row;
+        }
+        .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+        }
+        .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0px * var(--tw-space-y-reverse));
+        }
+
+        /*
+        ! Chart.js v3.7.0 | MIT License | https://www.chartjs.org
+        */
+        /*!
+         * Chart.js
+         * http://chartjs.org/
+         *
+         * Copyright 2021 Chart.js Contributors
+         * Released under the MIT license
+         * https://github.com/chartjs/Chart.js/blob/master/LICENSE.md
+         */
+        
+        @keyframes chartjs-tooltip-anim {
+          0% {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          50% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        canvas {
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        .chartjs-render-monitor {
+          -webkit-animation: chartjs-tooltip-anim 0.5s;
+          animation: chartjs-tooltip-anim 0.5s;
+        }
+
+        .chartjs-tooltip {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 8px;
+          border-radius: 4px;
+          pointer-events: none;
+          z-index: 10;
+          font-size: 12px;
+          line-height: 1.4;
+          opacity: 0;
+          transition: all 0.2s ease;
+        }
+        
+        .chartjs-tooltip-header {
+          padding-bottom: 4px;
+          margin-bottom: 4px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .chartjs-tooltip-body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        .chartjs-tooltip-label {
+          display: block;
+        }
     </style>
-</head>
-<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-    <div class="notification-container"></div>
-    <div id="custom-modal" class="modal-overlay hidden">
-        <div class="modal-box dark:bg-gray-800">
-            <h4 id="modal-title" class="text-xl font-bold text-gray-900 dark:text-gray-50">Alert</h4>
-            <p id="modal-text" class="mt-4 text-gray-700 dark:text-gray-300">This is a custom alert.</p>
-            <div class="mt-6 flex justify-center space-x-4">
-                <button id="modal-confirm-btn" class="px-4 py-2 bg-[#3d74b6] hover:bg-[#2d5f99] text-white rounded-md font-semibold">OK</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 space-y-6 border border-gray-200 dark:border-gray-700">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50">N.R.T.</h1>
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" id="tagline">Record an Achievement</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button id="toggle-view-btn" class="px-4 py-2 bg-[#3d74b6] hover:bg-[#2d5f99] rounded-md text-white font-semibold shadow-lg transform transition duration-200 hover:scale-105">
-                        Switch to Dashboard
-                    </button>
-                </div>
-            </div>
-
-            <div id="main-content-container">
-                <div id="form-view" class="space-y-6">
-                    <form id="sales-form" class="space-y-4">
-                        <div>
-                            <label for="date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Date <span class="text-red-500">*</span>
-                            </label>
-                            <input type="date" id="date" name="date" required
-                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between">
-                                <label for="storeName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Store Name <span class="text-red-500">*</span>
-                                </label>
-                                <button type="button" id="manage-stores-toggle" class="manage-toggle-btn text-[#3d74b6] hover:text-[#2d5f99]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 20h9"></path>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <select id="storeName" name="storeName" required
-                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                                <option value="" disabled selected>Select a store</option>
-                                </select>
-                            <div id="manage-stores-container" class="mt-4 space-y-4 hidden">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Manage Store Names</h3>
-                                <div class="flex items-center space-x-2">
-                                    <input type="text" id="new-store-input" placeholder="Search or add a store name"
-                                        class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
-                                    <button type="button" id="add-store-btn"
-                                        class="px-4 py-2 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed">
-                                        Add
-                                    </button>
-                                </div>
-                                <div id="store-list" class="space-y-2"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="mobileNumber" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Mobile Number <span class="text-red-500">*</span>
-                            </label>
-                            <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="e.g., 01712345678"
-                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                            <p id="mobile-error" class="mt-1 text-sm text-red-500 hidden">Please enter a valid 11-digit mobile number.</p>
-                        </div>
-                        <div>
-                            <label for="invoiceNumber" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Invoice Number <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="invoiceNumber" name="invoiceNumber" required placeholder="e.g., INV-00123"
-                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between">
-                                <label for="gadgetType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Gadget Type <span class="text-red-500">*</span>
-                                </label>
-                                <button type="button" id="manage-gadgets-toggle" class="manage-toggle-btn text-[#3d74b6] hover:text-[#2d5f99]">
-                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 20h9"></path>
-                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <select id="gadgetType" name="gadgetType" required
-                                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                                <option value="" disabled selected>Select a gadget type</option>
-                                </select>
-                            <div id="manage-gadgets-container" class="mt-4 space-y-4 hidden">
-                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Manage Gadget Types</h3>
-                                <div class="flex items-center space-x-2">
-                                    <input type="text" id="new-gadget-input" placeholder="Search or add a gadget type"
-                                        class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
-                                    <button type="button" id="add-gadget-btn"
-                                        class="px-4 py-2 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed">
-                                        Add
-                                    </button>
-                                </div>
-                                <div id="gadget-list" class="space-y-2"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="modelName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Model Name <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="modelName" name="modelName" required placeholder="e.g., iPhone 15 Pro"
-                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <label for="quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Quantity <span class="text-red-500">*</span>
-                                </label>
-                                <input type="number" id="quantity" name="quantity" required min="1" value="1"
-                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                            </div>
-                            
-                            <div>
-                                <label for="sellingPrice" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Selling Price (BDT) <span class="text-red-500">*</span>
-                                </label>
-                                <input type="number" id="sellingPrice" name="sellingPrice" required min="0" step="0.01" placeholder="e.g., 999.99"
-                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                            </div>
-
-                            <div>
-                                <label for="totalRevenue" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Total
-                                </label>
-                                <input type="number" id="totalRevenue" name="totalRevenue" readonly value="0.00"
-                                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 cursor-not-allowed">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="due" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Due (optional)</label>
-                            <input type="number" id="due" name="due" min="0" step="0.01" placeholder="e.g., 50.00"
-                                   class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50 focus:ring-[#3d74b6] focus:border-[#3d74b6] transition duration-150">
-                        </div>
-
-                        <div class="flex items-center mt-2">
-                            <input type="checkbox" id="keep-shop-info" class="h-4 w-4 text-[#3d74b6] focus:ring-[#3d74b6] border-gray-300 rounded">
-                            <label for="keep-shop-info" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">Keep Shop Name and Mobile Number</label>
-                        </div>
-
-                        <div class="flex space-x-4">
-                            <button type="submit" id="submit-btn"
-                                    class="flex-1 py-3 px-4 bg-[#3d74b6] hover:bg-[#2d5f99] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105">
-                                Submit
-                            </button>
-                            <button type="button" id="clear-form-btn"
-                                    class="flex-1 py-3 px-4 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105">
-                                Clear Form
-                            </button>
-                            <button type="button" id="cancel-edit-btn"
-                                    class="flex-1 py-3 px-4 bg-[#dc3c22] hover:bg-[#b0301a] rounded-md text-white font-semibold text-lg shadow-lg transform transition duration-200 hover:scale-105 hidden">
-                                Cancel Edit
-                            </button>
-                        </div>
-                    </form>
-
-                    <div id="data-display" class="mt-8">
-                        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-50">Saved Entries</h2>
-                        <div class="flex items-center space-x-2 mt-4">
-                            <input type="text" id="search-input" placeholder="Search by mobile, invoice, store, or date"
-                                   class="flex-1 rounded-md border-gray-300 dark:border-gray-600 shadow-sm p-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-50">
-                            <button type="button" id="clear-search-btn"
-                                    class="px-4 py-2 bg-[#dc3c22] hover:bg-[#b0301a] rounded-md text-white font-semibold">Clear</button>
-                        </div>
-                        <div class="flex justify-between space-x-2 mt-4">
-                             <button type="button" id="view-dues-btn"
-                                    class="flex-1 py-2 px-4 bg-[#fbf5de] hover:bg-[#e6e0cc] rounded-md text-gray-800 font-semibold">
-                                View Dues
-                            </button>
-                            <button type="button" id="export-btn"
-                                    class="flex-1 py-2 px-4 bg-[#eac8a6] hover:bg-[#d6b797] rounded-md text-white font-semibold">
-                                Export Data
-                            </button>
-                        </div>
-                        <div id="entries-list" class="mt-4 space-y-4">
-                            <p class="text-gray-500 dark:text-gray-400">No entries saved yet.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="dashboard-view" class="hidden">
-                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-                        <div class="bg-[#eac8a6] dark:bg-[#d6b797] p-6 rounded-lg shadow-md">
-                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Total Revenue</p>
-                            <p id="total-sales" class="mt-1 text-3xl font-bold text-gray-900 dark:text-gray-100">BDT 0.00</p>
-                        </div>
-                        <div class="bg-[#fbf5de] dark:bg-[#e6e0cc] p-6 rounded-lg shadow-md">
-                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Outstanding Due</p>
-                            <p id="total-due" class="mt-1 text-3xl font-bold text-gray-900 dark:text-gray-100">BDT 0.00</p>
-                        </div>
-                        <div class="bg-[#dc3c22] dark:bg-[#b0301a] p-6 rounded-lg shadow-md">
-                            <p class="text-sm font-medium text-white dark:text-gray-200">Total Shops</p>
-                            <p id="total-shops" class="mt-1 text-3xl font-bold text-white dark:text-gray-100">0</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Total Revenue by Date</h3>
-                            <canvas id="revenue-chart"></canvas>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Top Gadgets</h3>
-                            <canvas id="gadget-sales-chart"></canvas>
-                         </div>
-                         <div class="md:col-span-2 bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-50 mb-4">Sales by Store</h3>
-                            <canvas id="store-sales-chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Keys for Local Storage
@@ -404,7 +604,7 @@
             const GADGETS_KEY = 'chinoMartGadgets';
             const OFFLINE_QUEUE_KEY = 'chinoMartOfflineQueue';
             const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOyZ_ehxURDo1giZ9eFI1fMZnxkhzUOTFIJkGAze2YDU4xDoRACSaTW1uNdsFNHHBH/exec';
-
+        
             // Helper function to save data to Local Storage
             const saveDataToLocalStorage = (key, data) => {
                 try {
@@ -414,7 +614,7 @@
                     showNotification('Could not save data to your device. Local Storage might be full or disabled.', 'error');
                 }
             };
-
+        
             // Helper function to load data from Local Storage
             const loadDataFromLocalStorage = (key, defaultData) => {
                 try {
@@ -425,14 +625,14 @@
                     return defaultData;
                 }
             };
-
+        
             // State for the application, loaded from Local Storage
             let allSalesEntries = loadDataFromLocalStorage(SALES_KEY, []);
             let allStoreNames = loadDataFromLocalStorage(STORES_KEY, ['Hasan Tel', 'Classic Mobile', 'Big Rock', 'Shahenshah Gadgets', 'Students Gadgets', 'Phone Store', 'Telephonic', 'Rakib Telecom', 'i-Club', 'Navigation Center', 'Talha Telecom', 'Kajol Electronics', 'Talukdar Telecom', 'Company Store', 'Talukdar Telecom 2', 'Samart Sec & Tech', 'Bismillah Telecom', 'Sajol Telecom']);
             let allGadgetTypes = loadDataFromLocalStorage(GADGETS_KEY, ['Phone Charger', 'Ear Buds', 'USB Cable', 'Ear Phone']);
             let offlineQueue = loadDataFromLocalStorage(OFFLINE_QUEUE_KEY, []);
             let editingIndex = -1; // -1 means no entry is being edited
-
+        
             // DOM elements
             const form = document.getElementById('sales-form');
             const entriesList = document.getElementById('entries-list');
@@ -469,15 +669,15 @@
             const dateInput = document.getElementById('date');
             const mobileNumberInput = document.getElementById('mobileNumber');
             const keepShopInfoCheckbox = document.getElementById('keep-shop-info');
-
+        
             // Dashboard Metrics
             const totalSalesEl = document.getElementById('total-sales');
             const totalDueEl = document.getElementById('total-due');
             const totalShopsEl = document.getElementById('total-shops');
-
+        
             // Chart.js chart instances
             let revenueChart, gadgetSalesChart, storeSalesChart;
-
+        
             // Helper function for custom alerts
             const customAlert = (message, onConfirmCallback = () => {}) => {
                 modalTitle.textContent = 'Alert';
@@ -500,7 +700,7 @@
                     notification.remove();
                 }, 4000); // Notification disappears after 4 seconds
             };
-
+        
             // Load theme from system preference
             const loadTheme = () => {
                 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -521,7 +721,7 @@
                     option.textContent = name;
                     storeSelect.appendChild(option);
                 });
-
+        
                 gadgetSelect.innerHTML = '<option value="" disabled selected>Select a gadget type</option>';
                 allGadgetTypes.sort().forEach(type => {
                     const option = document.createElement('option');
@@ -530,14 +730,14 @@
                     gadgetSelect.appendChild(option);
                 });
             };
-
+        
             // Render the management lists with edit and delete buttons
             const renderManagementList = (inputElement, listElement, items, type) => {
                 const query = inputElement.value.toLowerCase();
                 listElement.innerHTML = '';
                 
                 const filteredItems = items.filter(item => item.toLowerCase().includes(query));
-
+        
                 if (filteredItems.length === 0 && query !== '') {
                     listElement.innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">No results found for "${query}".</p>`;
                 } else if (filteredItems.length > 0) {
@@ -551,7 +751,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M3 6h18"></path>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 0 0 1-2-2V6"></path>
-                                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 0 0 1 2 2v2"></path>
+                                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                         <line x1="10" y1="11" x2="10" y2="17"></line>
                                         <line x1="14" y1="11" x2="14" y2="17"></line>
                                     </svg>
@@ -620,7 +820,7 @@
                     });
                 });
             };
-
+        
             const updateAddButtonState = (inputElement, buttonElement, items) => {
                 const inputValue = inputElement.value.trim();
                 const itemExists = items.map(item => item.toLowerCase()).includes(inputValue.toLowerCase());
@@ -646,7 +846,7 @@
                     customAlert(`"${newStore}" already exists or is invalid.`);
                 }
             });
-
+        
             addGadgetBtn.addEventListener('click', () => {
                 const newGadget = newGadgetInput.value.trim();
                 if (newGadget && !allGadgetTypes.map(type => type.toLowerCase()).includes(newGadget.toLowerCase())) {
@@ -661,7 +861,7 @@
                     customAlert(`"${newGadget}" already exists or is invalid.`);
                 }
             });
-
+        
             newStoreInput.addEventListener('input', () => {
                 renderManagementList(newStoreInput, storeList, allStoreNames, 'store');
                 updateAddButtonState(newStoreInput, addStoreBtn, allStoreNames);
@@ -670,7 +870,7 @@
                 renderManagementList(newGadgetInput, gadgetList, allGadgetTypes, 'gadget');
                 updateAddButtonState(newGadgetInput, addGadgetBtn, allGadgetTypes);
             });
-
+        
             manageStoresToggleBtn.addEventListener('click', () => {
                 manageStoresContainer.classList.toggle('hidden');
                 if (!manageStoresContainer.classList.contains('hidden')) {
@@ -685,14 +885,14 @@
                     updateAddButtonState(newGadgetInput, addGadgetBtn, allGadgetTypes);
                 }
             });
-
+        
             const calculateTotalRevenue = () => {
                 const quantity = parseFloat(quantityInput.value) || 0;
                 const sellingPrice = parseFloat(sellingPriceInput.value) || 0;
                 const totalRevenue = quantity * sellingPrice;
                 totalRevenueInput.value = totalRevenue.toFixed(2);
             };
-
+        
             quantityInput.addEventListener('input', calculateTotalRevenue);
             sellingPriceInput.addEventListener('input', calculateTotalRevenue);
             
@@ -727,7 +927,7 @@
                 document.body.appendChild(tempDiv);
                 
                 const receiptElement = tempDiv.querySelector('.receipt-container');
-
+        
                 html2canvas(receiptElement, { scale: 2 }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = filename;
@@ -745,7 +945,7 @@
                     tempDiv.remove();
                 });
             };
-
+        
             const renderData = (data) => {
                 entriesList.innerHTML = '';
                 
@@ -753,7 +953,7 @@
                     entriesList.innerHTML = '<p class="text-gray-500 dark:text-gray-400">No matching entries found.</p>';
                     return;
                 }
-
+        
                 data.forEach((entry, index) => {
                     const entryDiv = document.createElement('div');
                     entryDiv.className = 'bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm flex flex-col sm:flex-row justify-between items-start';
@@ -783,7 +983,7 @@
                     `;
                     entriesList.appendChild(entryDiv);
                 });
-
+        
                 document.querySelectorAll('.delete-btn').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const indexToDelete = parseInt(e.target.getAttribute('data-index') || e.target.closest('button').getAttribute('data-index'));
@@ -837,15 +1037,15 @@
                     });
                 });
             };
-
+        
             const clearForm = () => {
                 const dateVal = dateInput.value;
                 const storeVal = storeSelect.value;
                 const mobileVal = mobileNumberInput.value;
-
+        
                 form.reset();
                 dateInput.value = dateVal;
-
+        
                 if (keepShopInfoCheckbox.checked) {
                     storeSelect.value = storeVal;
                     mobileNumberInput.value = mobileVal;
@@ -866,14 +1066,14 @@
             
             clearFormBtn.addEventListener('click', clearForm);
             cancelEditBtn.addEventListener('click', clearForm);
-
+        
             const viewDues = () => {
                 const dueEntries = allSalesEntries.filter(entry => parseFloat(entry.due) > 0);
                 renderData(dueEntries);
             };
-
+        
             viewDuesBtn.addEventListener('click', viewDues);
-
+        
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase();
                 if (query === '') {
@@ -888,12 +1088,12 @@
                     renderData(filteredData);
                 }
             });
-
+        
             clearSearchBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 renderData(allSalesEntries);
             });
-
+        
             const exportToCsv = () => {
                 if (allSalesEntries.length === 0) {
                     showNotification("There is no data to export!", 'error');
@@ -905,7 +1105,7 @@
                 
                 const csvRows = [];
                 csvRows.push(headers.join(','));
-
+        
                 for (const row of allSalesEntries) {
                     const values = keys.map(key => {
                         const value = row[key] !== undefined ? row[key] : '';
@@ -914,7 +1114,7 @@
                     });
                     csvRows.push(values.join(','));
                 }
-
+        
                 const csvString = csvRows.join('\n');
                 const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
                 const link = document.createElement('a');
@@ -924,13 +1124,13 @@
             };
             
             exportBtn.addEventListener('click', exportToCsv);
-
+        
             const validateForm = () => {
                 let isValid = true;
                 const requiredInputs = form.querySelectorAll('[required]');
                 const mobileNumberInput = document.getElementById('mobileNumber');
                 const mobileNumberError = document.getElementById('mobile-error');
-
+        
                 requiredInputs.forEach(input => {
                     if (input.value.trim() === '' || (input.tagName === 'SELECT' && input.value === '')) {
                         input.classList.add('invalid-field');
@@ -939,7 +1139,7 @@
                         input.classList.remove('invalid-field');
                     }
                 });
-
+        
                 const mobileNumberValue = mobileNumberInput.value.trim();
                 if (mobileNumberValue.length !== 11 || !/^\d{11}$/.test(mobileNumberValue)) {
                     mobileNumberInput.classList.add('invalid-field');
@@ -949,10 +1149,10 @@
                     mobileNumberInput.classList.remove('invalid-field');
                     mobileNumberError.classList.add('hidden');
                 }
-
+        
                 return isValid;
             };
-
+        
             const sendDataToGoogleSheet = async (data) => {
                 try {
                     await fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -984,16 +1184,16 @@
                     
                     offlineQueue = offlineQueue.filter(entry => !successfullySynced.includes(entry));
                     saveDataToLocalStorage(OFFLINE_QUEUE_KEY, offlineQueue);
-
+        
                     if (successfullySynced.length > 0) {
                         showNotification(`Synced ${successfullySynced.length} entries to Google Sheet!`, 'success');
                     }
                 }
             };
-
+        
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
-
+        
                 if (!validateForm()) {
                     showNotification('Please fill out all the required fields correctly.', 'error');
                     return;
@@ -1020,9 +1220,9 @@
                     allSalesEntries.push(newEntry);
                     showNotification('New entry added!');
                 }
-
+        
                 saveDataToLocalStorage(SALES_KEY, allSalesEntries);
-
+        
                 if (navigator.onLine) {
                     sendDataToGoogleSheet(newEntry)
                         .then(success => {
@@ -1047,32 +1247,32 @@
                 const shouldKeepShopInfo = keepShopInfoCheckbox.checked;
                 const lastStore = storeSelect.value;
                 const lastMobileNumber = mobileNumberInput.value;
-
+        
                 form.reset();
                 dateInput.value = lastDate;
-
+        
                 if (shouldKeepShopInfo) {
                     storeSelect.value = lastStore;
                     mobileNumberInput.value = lastMobileNumber;
                 } else {
                     storeSelect.value = ""; // Reset to default "Select a store"
                 }
-
+        
                 calculateTotalRevenue();
-
+        
                 renderData(allSalesEntries);
                 refreshDashboardMetrics();
                 if (dashboardView.classList.contains('hidden') === false) {
                     renderCharts();
                 }
             });
-
+        
             window.addEventListener('online', () => {
                 syncOfflineData();
             });
-
+        
             // NEW: Dashboard and Charting Functions
-
+        
             // Helper function to get theme-appropriate colors
             const getChartColors = () => {
                 const isDarkMode = document.documentElement.classList.contains('dark');
@@ -1102,7 +1302,7 @@
                 
                 return { a, b }; // a = slope, b = y-intercept
             };
-
+        
             // Prepare data for the revenue chart with trendline
             const prepareRevenueData = () => {
                 const groupedData = allSalesEntries.reduce((acc, entry) => {
@@ -1111,7 +1311,7 @@
                     acc[date] = (acc[date] || 0) + revenue;
                     return acc;
                 }, {});
-
+        
                 const sortedDates = Object.keys(groupedData).sort();
                 const revenues = sortedDates.map(date => groupedData[date]);
                 
@@ -1119,10 +1319,10 @@
                 const dateIndices = sortedDates.map((d, i) => i);
                 const { a, b } = getLinearRegression(dateIndices, revenues);
                 const trendlineData = sortedDates.map((d, i) => a * i + b);
-
+        
                 return { labels: sortedDates, data: revenues, trendlineData: trendlineData };
             };
-
+        
             // Prepare data for the top gadgets chart
             const prepareGadgetSalesData = () => {
                 const groupedData = allSalesEntries.reduce((acc, entry) => {
@@ -1134,10 +1334,10 @@
                 // Sort by sales count and get top 5
                 const sortedGadgets = Object.entries(groupedData).sort(([, a], [, b]) => b - a);
                 const topGadgets = sortedGadgets.slice(0, 5);
-
+        
                 return { labels: topGadgets.map(g => g[0]), data: topGadgets.map(g => g[1]) };
             };
-
+        
             // Prepare data for the store sales chart
             const prepareStoreSalesData = () => {
                 const groupedData = allSalesEntries.reduce((acc, entry) => {
@@ -1145,7 +1345,7 @@
                     acc[store] = (acc[store] || 0) + 1;
                     return acc;
                 }, {});
-
+        
                 return { labels: Object.keys(groupedData), data: Object.values(groupedData) };
             };
             
@@ -1159,7 +1359,7 @@
                 totalDueEl.textContent = `BDT ${totalDue.toFixed(2)}`;
                 totalShopsEl.textContent = uniqueStores;
             };
-
+        
             // Function to render all charts
             const renderCharts = () => {
                 const colors = getChartColors();
@@ -1168,11 +1368,11 @@
                 if (revenueChart) revenueChart.destroy();
                 if (gadgetSalesChart) gadgetSalesChart.destroy();
                 if (storeSalesChart) storeSalesChart.destroy();
-
+        
                 const revenueData = prepareRevenueData();
                 const gadgetData = prepareGadgetSalesData();
                 const storeData = prepareStoreSalesData();
-
+        
                 // Revenue by Date Chart
                 const revenueCtx = document.getElementById('revenue-chart').getContext('2d');
                 revenueChart = new Chart(revenueCtx, {
@@ -1216,7 +1416,7 @@
                         }
                     }
                 });
-
+        
                 // Top Gadgets Chart (Doughnut)
                 const gadgetCtx = document.getElementById('gadget-sales-chart').getContext('2d');
                 gadgetSalesChart = new Chart(gadgetCtx, {
@@ -1234,7 +1434,7 @@
                         plugins: { legend: { position: 'right', labels: { color: colors.textColor } } }
                     }
                 });
-
+        
                 // Sales by Store Chart (Bar)
                 const storeCtx = document.getElementById('store-sales-chart').getContext('2d');
                 storeSalesChart = new Chart(storeCtx, {
@@ -1265,7 +1465,7 @@
                     }
                 });
             };
-
+        
             // Toggle between form view and dashboard view
             toggleViewBtn.addEventListener('click', () => {
                 if (formView.classList.contains('hidden')) {
@@ -1279,7 +1479,7 @@
                     renderCharts(); // Render charts when the dashboard is visible
                 }
             });
-
+        
             // --- Initialization ---
             const initializeApp = () => {
                 allSalesEntries = loadDataFromLocalStorage(SALES_KEY, []);
@@ -1292,9 +1492,21 @@
                 refreshDashboardMetrics();
                 syncOfflineData();
             };
-
+        
             initializeApp();
         });
+        
     </script>
+    <script>
+        /*!
+         * Chart.js v3.7.0
+         * http://chartjs.org/
+         *
+         * Copyright 2021 Chart.js Contributors
+         * Released under the MIT license
+         * https://github.com/chartjs/Chart.js/blob/master/LICENSE.md
+         */
+        !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).Chart=e()}(this,(function(){"use strict";const t=new Uint8Array(16);function e(){if(!this.crypto||!this.crypto.getRandomValues){return(""+1e7+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,(t=>(""+t^255&Math.random()*16>>t/4).toString(16)))}(this.crypto.getRandomValues(t));return(""+1e7+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,(e=>(t[e]^15>>e/4).toString(16)))}})})}));
+        </script>
 </body>
 </html>
