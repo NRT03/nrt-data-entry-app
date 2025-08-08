@@ -1,11 +1,9 @@
-const CACHE_NAME = 'nrt-v2';
+const CACHE_NAME = 'nrt-v3';
 const urlsToCache = [
   './',
   'index.html',
   'manifest.json',
-  'https://cdn.tailwindcss.com',
-  'https://cdn.jsdelivr.net/npm/chart.js',
-  'https://html2canvas.hertzen.com/dist/html2canvas.min.js',
+  'service-worker.js',
   'icon-192x192.png',
   'icon-512x512.png'
 ];
@@ -14,7 +12,6 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
